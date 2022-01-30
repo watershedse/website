@@ -76,6 +76,3 @@ exports.createPages = async ({ actions, graphql }) => {
 	createPages(portfolioItems.data.portfolio.nodes, "PortfolioPage");
 	createPages(pageItems.data.page.nodes, "DefaultPage");
 };
-
-// Random fix for https://github.com/gatsbyjs/gatsby/issues/5700
-module.exports.resolvableExtensions = () => [".json"];
