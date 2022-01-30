@@ -1,6 +1,6 @@
 import { Link } from "gatsby";
 import BackgroundImage from "gatsby-background-image";
-import Image from "gatsby-image";
+import { GatsbyImage } from "gatsby-plugin-image";
 import React, { useState } from "react";
 
 const Excerpt = ({ text, minLength = 100 }) => {
@@ -28,10 +28,10 @@ const Page = ({
 }) => {
 	height = height || "200px";
 	const image =
-		page?.previewImage?.localFile?.childImageSharp?.fluid ??
-		page?.image?.localFile?.childImageSharp?.fluid;
+		page?.previewImage?.localFile?.childImageSharp?.gatsbyImageData ??
+		page?.image?.localFile?.childImageSharp?.gatsbyImageData;
 	return (
-		<Link
+        <Link
 			className={`hover:opacity-90 max-w-xs w-full rounded overflow-hidden shadow-lg hover:shadow-xl duration-500 transition-all ${
 				overlay && "text-center"
 			} ${className || ""}`}
@@ -39,7 +39,7 @@ const Page = ({
 		>
 			{masonry ? (
 				<div className="relative">
-					<Image fluid={image} style={{ minHeight: "100px" }} />
+					<GatsbyImage image={image} style={{ minHeight: "100px" }} />
 					<div className="absolute opacity-0 hover:opacity-100 transition-opacity duration-300 px-4 left-0 right-0 top-0 bottom-0 bg-black bg-opacity-60 text-center flex justify-center items-center">
 						<span className="font-bold text-xl text-white px-4 leading-5">
 							{page.title}
@@ -94,7 +94,7 @@ const Page = ({
 				</div>
 			)}
 		</Link>
-	);
+    );
 };
 
 const FilterMenu = ({ items, setPreviewItems }) => {

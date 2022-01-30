@@ -1,22 +1,18 @@
 import { graphql } from "gatsby";
 
-export const query = graphql`
-	fragment image on GraphCMS_Asset {
-		localFile {
-			childImageSharp {
-				fluid(maxWidth: 400) {
-					...GatsbyImageSharpFluid_withWebp
-				}
-			}
-		}
-	}
-	fragment imageWide on GraphCMS_Asset {
-		localFile {
-			childImageSharp {
-				fluid(maxWidth: 1920) {
-					...GatsbyImageSharpFluid_withWebp
-				}
-			}
-		}
-	}
+export const query = graphql`fragment image on GraphCMS_Asset {
+  localFile {
+    childImageSharp {
+      gatsbyImageData(width: 400, layout: CONSTRAINED)
+    }
+  }
+}
+
+fragment imageWide on GraphCMS_Asset {
+  localFile {
+    childImageSharp {
+      gatsbyImageData(layout: FULL_WIDTH)
+    }
+  }
+}
 `;

@@ -1,5 +1,5 @@
 import { graphql } from "gatsby";
-import Img from "gatsby-image";
+import { GatsbyImage } from "gatsby-plugin-image";
 import React from "react";
 import Layout from "../components/Layout";
 import PageHeader from "../components/PageHeader";
@@ -10,7 +10,7 @@ const TeamMemberPage = ({ pageContext, data: { page, images } }) => {
 			images.nodes[Math.floor(Math.random() * images.nodes.length)]
 	};
 	return (
-		<Layout meta={false} title={page.title || false}>
+        <Layout meta={false} title={page.title || false}>
 			<main>
 				<PageHeader
 					title={page.title}
@@ -25,9 +25,7 @@ const TeamMemberPage = ({ pageContext, data: { page, images } }) => {
 						<div className="grid grid-cols-4 gap-12">
 							{page.image && (
 								<div className="col-span-4 sm:col-span-2 lg:col-span-1">
-									<Img
-										fluid={page.image.localFile.childImageSharp.fluid}
-									/>
+									<GatsbyImage image={page.image.localFile.childImageSharp.gatsbyImageData} />
 								</div>
 							)}
 							<div className="col-span-4 sm:col-span-2 lg:col-span-3">
@@ -42,7 +40,7 @@ const TeamMemberPage = ({ pageContext, data: { page, images } }) => {
 				</section>
 			</main>
 		</Layout>
-	);
+    );
 };
 export default TeamMemberPage;
 
@@ -50,8 +48,7 @@ export const pageQuery = graphql`
 	query TeamMemberPage($id: String!) {
 		images: allImageSharp(
 			filter: {
-				fluid: { src: { glob: "**/*.jpg" } }
-				resolutions: { aspectRatio: { gt: 3 } }
+				fluid: { src: { glob: "**/*.jpg" }, aspectRatio: { gt: 3 } }
 			} # banner images by aspect
 		) {
 			nodes {

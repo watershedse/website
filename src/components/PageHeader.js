@@ -60,10 +60,10 @@ const PageHeader = ({
 		className += " py-32";
 	}
 	return (
-		<div className={`PageHeader relative`}>
+        <div className={`PageHeader relative`}>
 			{backgroundImage ? (
 				<BackgroundImage
-					fluid={backgroundImage.childImageSharp.fluid}
+					fluid={backgroundImage.childImageSharp.gatsbyImageData}
 					style={style}
 					size="cover"
 				>
@@ -83,7 +83,7 @@ const PageHeader = ({
 				/>
 			)}
 		</div>
-	);
+    );
 };
 
 PageHeader.propTypes = {
