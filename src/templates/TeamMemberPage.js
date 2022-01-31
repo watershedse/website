@@ -10,7 +10,7 @@ const TeamMemberPage = ({ pageContext, data: { page, images } }) => {
 			images.nodes[Math.floor(Math.random() * images.nodes.length)]
 	};
 	return (
-        <Layout meta={false} title={page.title || false}>
+		<Layout meta={false} title={page.title || false}>
 			<main>
 				<PageHeader
 					title={page.title}
@@ -25,7 +25,13 @@ const TeamMemberPage = ({ pageContext, data: { page, images } }) => {
 						<div className="grid grid-cols-4 gap-12">
 							{page.image && (
 								<div className="col-span-4 sm:col-span-2 lg:col-span-1">
-									<GatsbyImage image={page.image.localFile.childImageSharp.gatsbyImageData} />
+									<GatsbyImage
+										image={
+											page.image.localFile.childImageSharp
+												.gatsbyImageData
+										}
+										alt={page.title}
+									/>
 								</div>
 							)}
 							<div className="col-span-4 sm:col-span-2 lg:col-span-3">
@@ -40,7 +46,7 @@ const TeamMemberPage = ({ pageContext, data: { page, images } }) => {
 				</section>
 			</main>
 		</Layout>
-    );
+	);
 };
 export default TeamMemberPage;
 
@@ -52,9 +58,12 @@ export const pageQuery = graphql`
 			} # banner images by aspect
 		) {
 			nodes {
-				fluid(maxWidth: 960, duotone: { highlight: "#FFFFFF", shadow: "#3C5E31" }) {
-					...GatsbyImageSharpFluid
-				}
+				gatsbyImageData(
+					width: 960
+					transformOptions: {
+						duotone: { highlight: "#FFFFFF", shadow: "#3C5E31" }
+					}
+				)
 			}
 		}
 		page: graphCmsTeamMember(id: { eq: $id }) {

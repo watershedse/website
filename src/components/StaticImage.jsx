@@ -1,20 +1,27 @@
 import { graphql, useStaticQuery } from "gatsby";
 import { GatsbyImage } from "gatsby-plugin-image";
-import BackgroundImage from "gatsby-background-image";
+import { BgImage } from "gbimage-bridge";
 import React, { useMemo } from "react";
 
 export const StaticImage = ({ src, alt, background, ...props }) => {
-	const data = useStaticQuery(graphql`query LogoQuery {
-  allFile(filter: {extension: {in: ["jpg", "jpeg", "png", "webp"]}}) {
-    nodes {
-      relativePath
-      childImageSharp {
-        gatsbyImageData(width: 400, placeholder: NONE, layout: CONSTRAINED)
-      }
-    }
-  }
-}
-`);
+	const data = useStaticQuery(graphql`
+		query LogoQuery {
+			allFile(
+				filter: { extension: { in: ["jpg", "jpeg", "png", "webp"] } }
+			) {
+				nodes {
+					relativePath
+					childImageSharp {
+						gatsbyImageData(
+							width: 400
+							placeholder: NONE
+							layout: CONSTRAINED
+						)
+					}
+				}
+			}
+		}
+	`);
 
 	const match = useMemo(
 		() => data.allFile.nodes.find(({ relativePath }) => src === relativePath),
@@ -27,7 +34,7 @@ export const StaticImage = ({ src, alt, background, ...props }) => {
 
 	if (background) {
 		return (
-            <BackgroundImage
+			<BgImage
 				style={{
 					position: "absolute",
 					left: 0,
@@ -35,10 +42,16 @@ export const StaticImage = ({ src, alt, background, ...props }) => {
 					top: 0,
 					bottom: 0
 				}}
-				fluid={match.childImageSharp.gatsbyImageData}
+				image={match.childImageSharp.gatsbyImageData}
 			/>
-        );
+		);
 	}
 
-	return <GatsbyImage image={match.childImageSharp.gatsbyImageData} alt={alt} {...props} />;
+	return (
+		<GatsbyImage
+			image={match.childImageSharp.gatsbyImageData}
+			alt={alt}
+			{...props}
+		/>
+	);
 };

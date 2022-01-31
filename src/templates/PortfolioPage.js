@@ -26,7 +26,7 @@ const PortfolioPage = ({ pageContext, data: { page, bannerImage } }) => {
 							</div>
 							{page.image && (
 								<div className="col-span-5 lg:col-span-2">
-									<GatsbyImage image={page.image.localFile.childImageSharp.gatsbyImageData} />
+									<GatsbyImage image={page.image.localFile.childImageSharp.gatsbyImageData} alt={page.title} />
 								</div>
 							)}
 						</div>

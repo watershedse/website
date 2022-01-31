@@ -1,4 +1,4 @@
-import BackgroundImage from "gatsby-background-image";
+import { BgImage } from "gbimage-bridge";
 import { Breadcrumb } from "gatsby-plugin-breadcrumb";
 import PropTypes from "prop-types";
 import React from "react";
@@ -59,11 +59,12 @@ const PageHeader = ({
 	} else {
 		className += " py-32";
 	}
+
 	return (
-        <div className={`PageHeader relative`}>
+		<div className={`PageHeader relative`}>
 			{backgroundImage ? (
-				<BackgroundImage
-					fluid={backgroundImage.childImageSharp.gatsbyImageData}
+				<BgImage
+					image={backgroundImage.childImageSharp.gatsbyImageData}
 					style={style}
 					size="cover"
 				>
@@ -74,7 +75,7 @@ const PageHeader = ({
 						pageContext={pageContext}
 						breadcrumbs={breadcrumbs}
 					/>
-				</BackgroundImage>
+				</BgImage>
 			) : (
 				<PageHeaderInner
 					title={title}
@@ -83,7 +84,7 @@ const PageHeader = ({
 				/>
 			)}
 		</div>
-    );
+	);
 };
 
 PageHeader.propTypes = {
