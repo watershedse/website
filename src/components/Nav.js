@@ -55,7 +55,7 @@ export const Navigation = (props) => {
 		previewImageDuotone
 	}) => {
 		return (
-            <Link
+			<Link
 				to={to}
 				className="custom-group block text-white sm:text-primary hover:bg-primary-100 hover:text-primary px-6 py-2"
 			>
@@ -64,13 +64,18 @@ export const Navigation = (props) => {
 						<div className="hidden sm:block self-center relative h-10 w-14">
 							<div className="opacity-100 custom-group-hover-opacity-0 absolute">
 								<GatsbyImage
-                                    image={previewImageDuotone.childImageSharp.gatsbyImageData}
-                                    className="h-10 w-14" />
+									image={
+										previewImageDuotone.childImageSharp
+											.gatsbyImageData
+									}
+									className="h-10 w-14"
+								/>
 							</div>
 							<div className="opacity-0 custom-group-hover-opacity-100 absolute">
 								<GatsbyImage
-                                    image={previewImage.childImageSharp.gatsbyImageData}
-                                    className="h-10 w-14" />
+									image={previewImage.childImageSharp.gatsbyImageData}
+									className="h-10 w-14"
+								/>
 							</div>
 						</div>
 					)}
@@ -81,7 +86,7 @@ export const Navigation = (props) => {
 					</div>
 				</div>
 			</Link>
-        );
+		);
 	};
 
 	const AllNavLinks = () => {
