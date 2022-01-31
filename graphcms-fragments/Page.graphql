@@ -15,11 +15,35 @@ fragment Page on Page {
       text
     }
   }
+  attributes
+  order
+  createdBy {
+    ... on User {
+      remoteTypeName: __typename
+      remoteId: id
+      stage
+    }
+  }
+  updatedBy {
+    ... on User {
+      remoteTypeName: __typename
+      remoteId: id
+      stage
+    }
+  }
+  publishedBy {
+    ... on User {
+      remoteTypeName: __typename
+      remoteId: id
+      stage
+    }
+  }
   image {
     ... on Asset {
       remoteTypeName: __typename
       remoteId: id
       locale
+      stage
     }
   }
   previewImage {
@@ -27,38 +51,50 @@ fragment Page on Page {
       remoteTypeName: __typename
       remoteId: id
       locale
+      stage
     }
   }
   slider {
     ... on Slider {
       remoteTypeName: __typename
       remoteId: id
+      stage
     }
   }
-  attributes
-  order
-  remoteChildren: children {
-    ... on Category {
+  scheduledIn {
+    ... on ScheduledOperation {
       remoteTypeName: __typename
       remoteId: id
-    }
-    ... on Page {
-      remoteTypeName: __typename
-      remoteId: id
-    }
-    ... on Portfolio {
-      remoteTypeName: __typename
-      remoteId: id
-    }
-    ... on TeamMember {
-      remoteTypeName: __typename
-      remoteId: id
+      stage
     }
   }
   parents {
     ... on Page {
       remoteTypeName: __typename
       remoteId: id
+      stage
+    }
+  }
+  remoteChildren: children {
+    ... on Category {
+      remoteTypeName: __typename
+      remoteId: id
+      stage
+    }
+    ... on Page {
+      remoteTypeName: __typename
+      remoteId: id
+      stage
+    }
+    ... on Portfolio {
+      remoteTypeName: __typename
+      remoteId: id
+      stage
+    }
+    ... on TeamMember {
+      remoteTypeName: __typename
+      remoteId: id
+      stage
     }
   }
 }

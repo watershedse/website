@@ -6,16 +6,46 @@ fragment Category on Category {
   publishedAt
   title
   slug
+  createdBy {
+    ... on User {
+      remoteTypeName: __typename
+      remoteId: id
+      stage
+    }
+  }
+  updatedBy {
+    ... on User {
+      remoteTypeName: __typename
+      remoteId: id
+      stage
+    }
+  }
+  publishedBy {
+    ... on User {
+      remoteTypeName: __typename
+      remoteId: id
+      stage
+    }
+  }
   portfolios {
     ... on Portfolio {
       remoteTypeName: __typename
       remoteId: id
+      stage
+    }
+  }
+  scheduledIn {
+    ... on ScheduledOperation {
+      remoteTypeName: __typename
+      remoteId: id
+      stage
     }
   }
   parents {
     ... on Page {
       remoteTypeName: __typename
       remoteId: id
+      stage
     }
   }
 }
