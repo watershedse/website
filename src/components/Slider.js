@@ -6,7 +6,7 @@ import "./Slider.css";
 
 const Slider = ({ slides, title }) => {
 	return (
-        <div className="relative">
+		<div className="relative">
 			<div className="absolute hidden sm:block text-center left-1/2 top-1/2 transform -translate-x-1/2 -translate-y-1/2 px-8 py-6 text-white font-bold bg-black bg-opacity-60 max-w-1/2 z-10">
 				<h1
 					className="m-0 whitespace-pre"
@@ -26,13 +26,18 @@ const Slider = ({ slides, title }) => {
 			>
 				{slides.map((slide, i) => (
 					<div key={i} className="slide-container">
-						<GatsbyImage image={slide.image?.localFile?.childImageSharp?.gatsbyImageData} />
+						<GatsbyImage
+							image={
+								slide.image?.localFile?.childImageSharp?.gatsbyImageData
+							}
+							alt={slide.title}
+						/>
 						<p className="legend">{slide.title}</p>
 					</div>
 				))}
 			</Carousel>
 		</div>
-    );
+	);
 };
 
 export default Slider;
