@@ -9,11 +9,13 @@
     "url": "https://github.com/watershedse/website"
   },
   "dependencies": {
+    "@mdx-js/react": "^2.0.0",
     "@reach/router": "^1.2.1",
     "autoprefixer": "^10.1.0",
     "dom-form-serializer": "^1.0.7",
     "dotenv": "^15.0.0",
     "gatsby": "4.5",
+    "gatsby-background-image": "^1.6.0",
     "gatsby-cli": "^4.6.0",
     "gatsby-image": "^3.11.0",
     "gatsby-plugin-breadcrumb": "^12.3.1",
