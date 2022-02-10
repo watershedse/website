@@ -1,6 +1,6 @@
 import { graphql, useStaticQuery } from "gatsby";
-import Img from "gatsby-image";
-import BackgroundImage from "gatsby-background-image";
+import { GatsbyImage } from "gatsby-plugin-image";
+import { BgImage } from "gbimage-bridge";
 import React, { useMemo } from "react";
 
 export const StaticImage = ({ src, alt, background, ...props }) => {
@@ -12,9 +12,11 @@ export const StaticImage = ({ src, alt, background, ...props }) => {
 				nodes {
 					relativePath
 					childImageSharp {
-						fluid(maxWidth: 400) {
-							...GatsbyImageSharpFluid_withWebp_noBase64
-						}
+						gatsbyImageData(
+							width: 400
+							placeholder: NONE
+							layout: CONSTRAINED
+						)
 					}
 				}
 			}
@@ -32,7 +34,7 @@ export const StaticImage = ({ src, alt, background, ...props }) => {
 
 	if (background) {
 		return (
-			<BackgroundImage
+			<BgImage
 				style={{
 					position: "absolute",
 					left: 0,
@@ -40,10 +42,16 @@ export const StaticImage = ({ src, alt, background, ...props }) => {
 					top: 0,
 					bottom: 0
 				}}
-				fluid={match.childImageSharp.fluid}
+				image={match.childImageSharp.gatsbyImageData}
 			/>
 		);
 	}
 
-	return <Img fluid={match.childImageSharp.fluid} alt={alt} {...props} />;
+	return (
+		<GatsbyImage
+			image={match.childImageSharp.gatsbyImageData}
+			alt={alt}
+			{...props}
+		/>
+	);
 };

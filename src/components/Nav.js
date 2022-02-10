@@ -1,6 +1,6 @@
 import { Location } from "@reach/router";
 import { Link } from "gatsby";
-import Img from "gatsby-image";
+import { GatsbyImage } from "gatsby-plugin-image";
 import React, { useEffect, useState } from "react";
 import "./Nav.css";
 
@@ -63,14 +63,17 @@ export const Navigation = (props) => {
 					{previewImage && previewImageDuotone && (
 						<div className="hidden sm:block self-center relative h-10 w-14">
 							<div className="opacity-100 custom-group-hover-opacity-0 absolute">
-								<Img
-									fluid={previewImageDuotone.childImageSharp.fluid}
+								<GatsbyImage
+									image={
+										previewImageDuotone.childImageSharp
+											.gatsbyImageData
+									}
 									className="h-10 w-14"
 								/>
 							</div>
 							<div className="opacity-0 custom-group-hover-opacity-100 absolute">
-								<Img
-									fluid={previewImage.childImageSharp.fluid}
+								<GatsbyImage
+									image={previewImage.childImageSharp.gatsbyImageData}
 									className="h-10 w-14"
 								/>
 							</div>

@@ -6,7 +6,7 @@ import Layout from "../components/Layout";
 import React from "react";
 import _get from "lodash/get";
 
-export default ({ children }) => (
+const NotFoundPage = ({ children }) => (
 	<StaticQuery
 		query={graphql`
 			query NotFoundPageQuery {
@@ -40,3 +40,5 @@ export default ({ children }) => (
 		)}
 	/>
 );
+
+export default NotFoundPage;
