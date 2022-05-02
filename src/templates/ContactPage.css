@@ -26,6 +26,11 @@
 	margin: 0;
 }
 
+.Contact .body-content p {
+  margin-bottom: 0.15rem;
+}
+
 .Contact .body-content h4 {
-	margin-top: 2em;
+	margin-top: 1em;
+  margin-bottom: 0;
 }
