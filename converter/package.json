@@ -12,7 +12,7 @@
     "deep-rename-keys": "^0.2.1",
     "dotenv": "^8.2.0",
     "gray-matter": "^4.0.2",
-    "jsdom": "^16.4.0",
+    "jsdom": "^16.5.0",
     "node-fetch": "^2.6.1",
     "remark-parse": "^9.0.0",
     "remark-slate": "^1.4.0",
